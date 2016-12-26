@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BreadcrumbService } from '../../services/breadcrumb.service';
+import { TransactionService } from '../../services/transaction.service';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { BreadcrumbService } from '../../services/breadcrumb.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public date: Date = new Date();
+  public transactions: Transaction[];
 
-  constructor(private breadServ: BreadcrumbService) {
+  constructor(
+      private breadServ: BreadcrumbService,
+      private transServ: TransactionService
+  ) {
     // TODO
   }
 
@@ -27,7 +32,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       ]
     });
-  }
+
+    this.transServ.getTransactions()
+        .then(transactions => { this.transactions = transactions;
+                                console.log(this.transactions)});
+    ;
+}
 
   public ngOnDestroy() {
     this.breadServ.clear();

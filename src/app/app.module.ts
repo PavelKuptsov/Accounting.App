@@ -47,6 +47,7 @@ import { AuthService } from './services/auth.service';
 import { CanActivateGuard } from './services/guard.service';
 import { NotificationService } from './services/notification.service';
 import { BreadcrumbService } from './services/breadcrumb.service';
+import { TransactionService } from './services/transaction.service';
 
 let services = [
   UserService,
@@ -54,7 +55,8 @@ let services = [
   MessagesService,
   AuthService,
   CanActivateGuard,
-  NotificationService
+  NotificationService,
+  TransactionService
 ];
 
 import { HomeComponent } from './pages/home/home.component';

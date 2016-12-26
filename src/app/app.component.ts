@@ -50,12 +50,12 @@ export class AppComponent implements OnInit {
     this.userServ.setCurrentUser(user1);
 
     // envoi d'un message de test
-    this.msgServ.addMessage(new Message({
-      author: user2,
-      content: 'le contenu d\'un message d\'une importance extreme',
-      destination: user1,
-      title: 'un message super important'
-    }));
+    // this.msgServ.addMessage(new Message({
+    //   author: user2,
+    //   content: 'le contenu d\'un message d\'une importance extreme',
+    //   destination: user1,
+    //   title: 'un message super important'
+    // }));
   }
 
   protected detectIE(): any {
