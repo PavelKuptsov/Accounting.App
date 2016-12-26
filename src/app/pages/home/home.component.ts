@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BreadcrumbService } from '../../services/breadcrumb.service';
 import { TransactionService } from '../../services/transaction.service';
+import { AccountService } from '../../services/account.service';
 import { Transaction } from '../../models/transaction';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +12,12 @@ import { Transaction } from '../../models/transaction';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public transactions: Transaction[];
+  public accounts: Account[];
 
   constructor(
       private breadServ: BreadcrumbService,
-      private transServ: TransactionService
+      private transServ: TransactionService,
+      private accServ: AccountService
   ) {
     // TODO
   }
@@ -36,7 +40,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.transServ.getTransactions()
         .then(transactions => { this.transactions = transactions;
                                 console.log(this.transactions)});
-    ;
+
+    this.accServ.getAccounts()
+        .then(accounts => { this.accounts = accounts;
+                            console.log(this.accounts)});
+
 }
 
   public ngOnDestroy() {
