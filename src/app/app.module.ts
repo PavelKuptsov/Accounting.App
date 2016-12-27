@@ -8,6 +8,7 @@ import { AlertModule, DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { ToasterModule } from 'angular2-toaster/angular2-toaster';
 import { environment } from '../environments/environment';
+import { Configuration } from './app.constants';
 
 let modules = [
   AlertModule,
@@ -49,6 +50,7 @@ import { NotificationService } from './services/notification.service';
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { TransactionService } from './services/transaction.service';
 import { AccountService } from './services/account.service';
+import { CategoryService } from './services/category.service';
 
 let services = [
   UserService,
@@ -58,7 +60,9 @@ let services = [
   CanActivateGuard,
   NotificationService,
   TransactionService,
-  AccountService
+  AccountService,
+  CategoryService,
+  Configuration
 ];
 
 import { HomeComponent } from './pages/home/home.component';

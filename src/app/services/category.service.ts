@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Transaction } from '../models/transaction';
+import { Category } from '../models/category';
 import { Headers, Http } from '@angular/http';
 import { Configuration } from '../app.constants';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class TransactionService {
-    private transactionsUrl = this.config.serverWithApiUrl + 'transactions/';
+export class CategoryService {
+    private categoriesUrl = this.config.serverWithApiUrl + 'categories/';
     private headers = new Headers({
         'Content-Type': 'application/json',
         'Authorization': this.config.token
@@ -16,10 +16,10 @@ export class TransactionService {
     constructor(private http: Http,
                 private config: Configuration) {}
 
-    getTransactions(): Promise<Transaction[]> {
-        return this.http.get(this.transactionsUrl, {headers: this.headers})
+    getCategories(): Promise<Category[]> {
+        return this.http.get(this.categoriesUrl, {headers: this.headers})
                    .toPromise()
-                   .then(response => response.json() as Transaction[])
+                   .then(response => response.json() as Category[])
                    .catch(this.handleError);
                }
 

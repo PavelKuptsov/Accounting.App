@@ -16,10 +16,10 @@
 				<td>{{ trans.transaction_id }}</td>
 				<td>{{ trans.transaction_type_id }}</td>
 				<td>{{ trans.amount }}</td>
-				<td>{{ trans.balance_id }}</td>
-				<td>{{ trans.category_id }}</td>
+				<td>{{ trans.account.name }}</td>
+				<td *ngIf="trans.category">{{ trans.category.name }}</td>
 				<td>{{ trans.comment }}</td>
-				<td>{{ trans.date }}</td>
+				<td>{{ trans.date | date:"dd.MM.yyyy" }}</td>
 			</tr>
 		</tbody>
 	</table>

@@ -1,3 +1,6 @@
+import { Account } from './account';
+import { Category } from './category';
+
 export class Transaction {
     transaction_id: number;
     transaction_type_id: number;
@@ -5,7 +8,9 @@ export class Transaction {
     balance_id: number;
     category_id: number;
     comment: string;
-    date: string;
+    date: Date;
     child_to: number;
     order: number;
+    account: Account;
+    category: Category;
 }

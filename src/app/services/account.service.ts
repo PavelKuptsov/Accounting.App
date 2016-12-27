@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../models/account';
 import { Headers, Http } from '@angular/http';
+import { Configuration } from '../app.constants';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AccountService {
-    private accountsUrl = 'http://localhost:5000/api/accounts/';
-    private test_username = 'test_username';
-    private test_password = 'test_password';
-    private token = 'Basic ' + btoa(this.test_username + ':' + this.test_password);
+    private accountsUrl = this.config.serverWithApiUrl + 'accounts/';
     private headers = new Headers({
         'Content-Type': 'application/json',
-        'Authorization': this.token
+        'Authorization': this.config.token
     });
 
-    constructor(private http: Http) {}
+    constructor(private http: Http,
+                private config: Configuration) {}
 
     getAccounts(): Promise<Account[]> {
         return this.http.get(this.accountsUrl, {headers: this.headers})
